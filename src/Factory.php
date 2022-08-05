@@ -171,7 +171,7 @@ class Factory
                 'message' => $data['message'] ?? '',
                 'type' => $type = $data['type'] ?? '',
             ]))->setId($this->createMessageId())
-            ->icon($this->getConfig('icons.' + $type))
+            ->icon($this->getConfig('icons.' . $type))
         );
 
         return $message;
@@ -185,7 +185,7 @@ class Factory
      */
     protected function getConfig($key = null)
     {
-        return $this->config->get('flash-messages.' + $key);
+        return $this->config->get('flash-messages.' . $key);
     }
 
     /**
@@ -218,7 +218,7 @@ class Factory
         }
 
         return $this->message([
-            'type' => $this->getConfig('types.' + $name),
+            'type' => $this->getConfig('types.' . $name),
             'message' => $arguments[0],
         ]);
     }
