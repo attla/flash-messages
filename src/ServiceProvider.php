@@ -46,8 +46,6 @@ class ServiceProvider extends BaseServiceProvider
         $blade->directive('message', $message = $this->diretiveCallable('message'));
         $blade->directive('messages', $message);
         $blade->directive('flash', $message);
-        $blade->directive('flash-message', $message);
-        $blade->directive('flash-messages', $message);
 
         $blade->directive('error', $error = $this->diretiveCallable('error'));
         $blade->directive('errors', $error);
