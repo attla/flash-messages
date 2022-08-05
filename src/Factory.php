@@ -113,9 +113,10 @@ class Factory
      */
     public function sync(Message $message)
     {
-        $this->flashs->get($message->getId())->update($message);
-
-        $this->session->flash($this->flashName, $this->flashs);
+        $this->session->flash(
+            $this->flashName,
+            $this->flashs = $this->getSession()->get($message->getId())->update($message)
+        );
         // $this->session->put(
         //     $this->flashName,
         //     $this->getSession()->put(
