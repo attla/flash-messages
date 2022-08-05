@@ -35,12 +35,12 @@ class Message extends \ArrayObject implements
     /**
      * Set message identifier
      *
-     * @param string $id
+     * @param mixed $id
      * @return $this
      */
-    public function setId(string $id)
+    public function setId($id)
     {
-        $this->id = $id;
+        $this->id = (string) $id;
         return $this;
     }
 
