@@ -17,7 +17,7 @@ function flash(string $message = null, $type = null): Factory
         return $notifier;
     }
 
-    $notifier->flash(compact(
+    $notifier->message(compact(
         'message',
         'type',
     ));
