@@ -60,11 +60,9 @@ class Factory
      */
     public function __construct(
         Session $session = null,
-        // Dispatcher $events = null,
         Repository $config = null
     ) {
         $this->session = $session;
-        // $this->events = $events;
         $this->config = $config;
     }
 
@@ -92,12 +90,6 @@ class Factory
             throw new \InvalidArgumentException('The session instance is needed to fire a flash message.');
         }
 
-        // $default =  collect();
-
-        // $session = $this->flashs instanceof Collection
-        //     ? $this->flashs
-        //     : $this->session->get($this->flashName, $default);
-
         if ($this->flashs instanceof Collection) {
             return $this->flashs;
         }
@@ -115,16 +107,8 @@ class Factory
     {
         $this->session->flash(
             $this->flashName,
-            $this->flashs = $this->getSession()->get($message->getId())->update($message)
+            $this->flashs = $this->getSession()->put($message->getId(), $message)
         );
-        // $this->session->put(
-        //     $this->flashName,
-        //     $this->getSession()->put(
-        //         $key = $message->getType(),
-        //         $this->getSession($key)
-        //             ->put($message->getId(), $message)
-        //     )
-        // );
     }
 
     /**
@@ -146,26 +130,6 @@ class Factory
         if (empty($data['message'])) {
             throw new \InvalidArgumentException('The "message" parameter must be provide.');
         }
-
-        // $types = $this->getSession($message['type']);
-        // $lastFlashId = $this->getFlashId();
-
-        // tenta remover o ultimo objeto dai set o novo
-        // verificar se ha possibilidade de o objeto antigo ser removido mesmo
-        // se não for chamado por um metodo auxiliar como o class,icon,timeout e dimissable
-
-        // if ($types->has($lastFlashId = $this->getFlashId())) {
-        //     $msg = $types->get($lastFlashId);
-        //     $types->forget($lastFlashId);
-        // } else {
-        //     $msg = new Message([
-        //         'message' => $message['message'] ?? '',
-        //         'type' => $message['type'],
-        //     ]);
-        // }
-        // $types->has($lastFlashId = $this->getFlashId()) && $types->forget($lastFlashId);
-
-        // $types->put($this->getFlashId($msg), $msg);
 
         $this->sync(
             $message = (new Message([

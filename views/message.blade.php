@@ -9,11 +9,17 @@ $flashName = \Flash::getName();
         'alert',
         'alert-' . $flash['type'],
         'alert-dismissible'                     => $flash['dismissible'],
-        !empty($flash['class'])                 => $flash['class'],
+        $flash['class']                         => !empty($flash['class']),
+        'alert-timeout'                         => !empty($flash['timeout']),
         (!empty($between) ? $between : 'mb-2')  => !$loop->last,
+        (!empty($first) ? $first : '')          => $loop->first,
         (!empty($last) ? $last : '')            => $loop->last,
         'rounded-0'                             => !empty($flat),
-    ]) role="alert">
+    ]) role="alert"
+    @if (!empty($flash['timeout']))
+     data-alert-timeout="{{ $flash['timeout'] }}"
+    @endif
+    >
         {!! $flash['icon'] !!}
         {!! $flash['message'] !!}
         @if($flash['dismissible'])
@@ -25,7 +31,10 @@ $flashName = \Flash::getName();
 <script>
 window.onload = function() {
     if (window.jQuery) {
-        $('div.alert:not(.alert-dismissible)').delay({{ !empty($timeout) ? (int) $timeout : 3500}}).fadeOut(350)
+        $('div.alert.alert-timeout').each(function(){
+            var me = $(this);
+            me.delay(parseInt(me.data('alert-timeout')) * 1000).fadeOut(350)
+        });
     }
 };
 </script>

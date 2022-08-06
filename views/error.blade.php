@@ -1,8 +1,9 @@
 @if ($errors->any())
 <div @class([
     'alert alert-danger alert-dismissible',
-    (!empty($last) ? $last : '')            => !empty($last) ? $last : '',
     'rounded-0'                             => !empty($flat),
+    (!empty($first) ? $first : '')          => $loop->first,
+    (!empty($last) ? $last : '')            => $loop->last,
 ]) role="alert">
     @foreach($errors->all() as $error)
     {{ $error }}<br/>

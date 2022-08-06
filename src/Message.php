@@ -45,17 +45,6 @@ class Message extends \ArrayObject implements
     }
 
     /**
-     * Get message identifier
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-
-    /**
      * Set message type
      *
      * @param mixed $type
