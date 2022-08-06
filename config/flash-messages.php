@@ -32,14 +32,3 @@ return [
     ],
 
 ];
-
-// o factore cria a message, cria um id interno, salva o id interno e o tipo na propria message e retorna a message
-//  dai na message tera os methodos de add classe e icon e tals
-// ao chamar um metodo auxiliar do message
-// é acionado um evento que salva no session a message
-// seria interessante também ter um metodo para deletar a message que seguiria o mesmo fluxo
-
-// Flash::info('test');
-// Flash::ok('test');
-// Flash::alert('test')->icon('fa fa-info')->timeout(3);
-// Flash::alert('test')->dismissible();
