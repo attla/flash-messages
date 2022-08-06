@@ -18,11 +18,46 @@ class Message extends \ArrayObject implements
 {
     use AbstractData;
 
+    /**
+     * Flash message
+     *
+     * @var string
+     */
     public $message = '';
+
+    /**
+     * Flash icon
+     *
+     * @var string
+     */
     public $icon = '';
+
+    /**
+     * Flash type class
+     *
+     * @var string
+     */
     public $type = 'info';
+
+    /**
+     * Flash custom classes
+     *
+     * @var string
+     */
     public $class = '';
+
+    /**
+     * Indicate if is dismissible
+     *
+     * @var bool
+     */
     public $dismissible = false;
+
+    /**
+     * Flash timeout in seconds
+     *
+     * @var int
+     */
     public $timeout;
 
     /**
@@ -85,6 +120,12 @@ class Message extends \ArrayObject implements
         return $this;
     }
 
+    /**
+     * Set classes for the flash message
+     *
+     * @param mixed $class
+     * @return $this
+     */
     public function class($class = ''): self
     {
         $this->set('class', $class);
@@ -92,40 +133,78 @@ class Message extends \ArrayObject implements
         return $this;
     }
 
+    /**
+     * Set timeout for the flash message
+     *
+     * @param int $seconds
+     * @return $this
+     */
     public function timeout(int $seconds): self
     {
         $this->set('timeout', $seconds);
+        $this->set('dismissible', false);
         Facade::sync($this);
         return $this;
     }
 
+    /**
+     * Make the flash message dismissible
+     *
+     * @return $this
+     */
     public function dismissible(): self
     {
         $this->set('dismissible', true);
+        $this->set('timeout', null);
         Facade::sync($this);
         return $this;
     }
 
+    /**
+     * Destroy the flash message
+     *
+     * @return bool
+     */
     public function destroy(): bool
     {
         return Facade::destroy($this);
     }
 
+    /**
+     * Alias for destroy()
+     *
+     * @return bool
+     */
     public function delete(): bool
     {
         return $this->destroy();
     }
 
+    /**
+     * Alias for destroy()
+     *
+     * @return bool
+     */
     public function forget(): bool
     {
         return $this->destroy();
     }
 
+    /**
+     * Alias for destroy()
+     *
+     * @return bool
+     */
     public function unset(): bool
     {
         return $this->destroy();
     }
 
+    /**
+     * Alias for destroy()
+     *
+     * @return bool
+     */
     public function unqueue(): bool
     {
         return $this->destroy();
