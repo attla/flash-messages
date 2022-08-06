@@ -27,6 +27,9 @@
         "spatie/laravel-flash": ">=0.0.1"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Attla\\Flash\\": "src/"
         }
