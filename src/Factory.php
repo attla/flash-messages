@@ -112,6 +112,20 @@ class Factory
     }
 
     /**
+     * Destroy an message on session storage
+     *
+     * @param \Attla\Flash\Message $message
+     * @return void
+     */
+    public function destroy(Message $message)
+    {
+        $this->session->flash(
+            $this->flashName,
+            $this->flashs = $this->getSession()->forget($message->getId())
+        );
+    }
+
+    /**
      * Create a new flash message
      *
      * @param mixed $data
