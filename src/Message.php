@@ -174,9 +174,9 @@ class Message extends \ArrayObject implements
     /**
      * Destroy the flash message
      *
-     * @return bool
+     * @return void
      */
-    public function destroy(): bool
+    public function destroy()
     {
         return Facade::destroy($this);
     }
@@ -184,9 +184,9 @@ class Message extends \ArrayObject implements
     /**
      * Alias for destroy()
      *
-     * @return bool
+     * @return void
      */
-    public function delete(): bool
+    public function delete()
     {
         return $this->destroy();
     }
@@ -194,9 +194,9 @@ class Message extends \ArrayObject implements
     /**
      * Alias for destroy()
      *
-     * @return bool
+     * @return void
      */
-    public function forget(): bool
+    public function forget()
     {
         return $this->destroy();
     }
@@ -204,9 +204,9 @@ class Message extends \ArrayObject implements
     /**
      * Alias for destroy()
      *
-     * @return bool
+     * @return void
      */
-    public function unset(): bool
+    public function unset()
     {
         return $this->destroy();
     }
@@ -214,9 +214,9 @@ class Message extends \ArrayObject implements
     /**
      * Alias for destroy()
      *
-     * @return bool
+     * @return void
      */
-    public function unqueue(): bool
+    public function unqueue()
     {
         return $this->destroy();
     }
