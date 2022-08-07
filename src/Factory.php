@@ -134,9 +134,9 @@ class Factory
         $this->sync(
             $message = (new Message([
                 'message' => $data['message'] ?? '',
-                'type' => $type = $data['type'] ?? '',
+                'type' => $data['type'] ?? '',
+                'icon' => $data['icon'] ?? '',
             ]))->setId($this->createMessageId())
-            ->icon($this->getConfig('icons.' . $type))
         );
 
         return $message;
@@ -148,9 +148,9 @@ class Factory
      * @param string $key
      * @return mixed
      */
-    protected function getConfig($key = null)
+    protected function getConfig($key = null, $default = null)
     {
-        return $this->config->get('flash-messages.' . $key);
+        return $this->config->get('flash-messages.' . $key, $default);
     }
 
     /**
@@ -183,8 +183,9 @@ class Factory
         }
 
         return $this->message([
-            'type' => $this->getConfig('types.' . $name),
             'message' => $arguments[0],
+            'type' => $this->getConfig('types.' . $name),
+            'icon' => $this->getConfig('icons.' . $name, ''),
         ]);
     }
 }

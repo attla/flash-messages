@@ -102,20 +102,31 @@ class Message extends \ArrayObject implements
     }
 
     /**
+     * Set message icon
+     *
+     * @param string $icon
+     * @return string
+     */
+    public function seticon($icon = '')
+    {
+        if (!empty($icon)) {
+            return $icon != strip_tags($icon)
+                ? $icon
+                : '<i class="' . $this->setClass($icon) . '"></i>';
+        }
+
+        return $icon;
+    }
+
+    /**
      * Store an flash message in the session
      *
      * @param mixed $icon
      * @return $this
      */
-    public function icon($icon = null): self
+    public function icon($icon = ''): self
     {
-        if (!empty($icon)) {
-            $this->set(
-                'icon',
-                $icon != strip_tags($icon) ? $icon : '<i class="' . $this->setClass($icon) . '"></i>',
-            );
-        }
-
+        $this->set('icon', $icon);
         Facade::sync($this);
         return $this;
     }
