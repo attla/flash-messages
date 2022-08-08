@@ -160,6 +160,7 @@ class Factory
      * Retrieve flash config
      *
      * @param string $key
+     * @param mixed $default
      * @return mixed
      */
     protected function getConfig($key = null, $default = null)
