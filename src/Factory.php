@@ -73,8 +73,8 @@ class Factory
      */
     protected function createMessageId(): string
     {
-        $time = microtime(true) . mt_rand(99, 9999999);
-        return base_convert(preg_replace('/[^0-9]/', '', $time), 10, 36);
+        $time = microtime(true) . mt_rand(-999999, 9999999);
+        return str_shuffle(base_convert(preg_replace('/[^0-9]/', '', $time), 10, 36));
     }
 
     /**
