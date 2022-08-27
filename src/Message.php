@@ -66,19 +66,7 @@ class Message extends \ArrayObject implements
      *
      * @var string
      */
-    private $id = null;
-
-    /**
-     * Set message identifier
-     *
-     * @param mixed $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->id = (string) $id;
-        return $this;
-    }
+    public $id = null;
 
     /**
      * Set message type

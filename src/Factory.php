@@ -150,7 +150,8 @@ class Factory
                 'message' => $data['message'] ?? '',
                 'type' => $data['type'] ?? '',
                 'icon' => $data['icon'] ?? '',
-            ]))->setId($this->createMessageId())
+                'id' => $this->createMessageId(),
+            ]))
         );
 
         return $message;
