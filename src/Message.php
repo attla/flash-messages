@@ -10,6 +10,7 @@ use Illuminate\Contracts\Support\{
     Arrayable,
     Jsonable
 };
+use Illuminate\Support\Arr;
 
 class Message extends \ArrayObject implements
     Arrayable,
@@ -219,5 +220,20 @@ class Message extends \ArrayObject implements
     public function unqueue()
     {
         return $this->destroy();
+    }
+
+    /**
+     * Extracts this object into associative array
+     *
+     * @return mixed[]
+     */
+    public function extract(): array
+    {
+        $data = [];
+        foreach (array_keys(Arr::except($this->dtoData, 'id')) as $name) {
+            $data[$name] = $this->get($name);
+        }
+
+        return $data;
     }
 }
