@@ -12,13 +12,8 @@ use Illuminate\Contracts\Support\{
 };
 use Illuminate\Support\Arr;
 
-class Message extends \ArrayObject implements
-    Arrayable,
-    Jsonable,
-    \JsonSerializable
+class Message extends AbstractData
 {
-    use AbstractData;
-
     /**
      * Flash message
      *
